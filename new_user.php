@@ -38,6 +38,7 @@ $result = $conn->query($sql);
 if ($result->num_rows >= 1) {
     $_SESSION["error"] = "user already exists!";
     header("location:register.php");
+    exit;
 //    echo $_SESSION["error"];
 }
 
@@ -48,6 +49,7 @@ $sql = "INSERT INTO users (username, password)
 VALUES ('$user', '$pass_hash')";
 
 if ($conn->query($sql) === TRUE) {
+    $_SESSION["error"] = "";
     header("location:index.php");
 } else {
   $_SESSION["error"] = "error creating account, please try again!";
