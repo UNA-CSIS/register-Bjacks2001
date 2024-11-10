@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,6 +9,11 @@
         <title></title>
     </head>
     <body>
+        <?php
+        if (isset($_SESSION['error'])) {
+            echo "<em>" . $_SESSION['error'] . "</em>";
+        }
+        ?>
         <form action="new_user.php" method="POST">
             Username: <input type="text" name="user"><br>
             Password: <input type="password" name="pwd"><br>
